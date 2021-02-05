@@ -3,34 +3,41 @@ import { StyleSheet, View, Text, ImageBackground } from 'react-native';
 import StyledButton from './StyledButton';
 
 export default CarItem = (props) => {
-    return (
+  const { tagline, taglineCTA, name, image } = props;
+
+  return (
+  <View style={styles.carContainer}>
+
+    <ImageBackground 
+        source={image}
+        style={styles.image}
+    />
+
     <View style={styles.carContainer}>
-
-      <ImageBackground 
-          source={require('../images/ModelX.jpeg')}
-          style={styles.image}
-      />
-
-      <View style={styles.carContainer}>
-        <View style={styles.titles}>
-          <Text style={styles.title}>Model S</Text>
-          <Text style={styles.subtitle}>Starting at {props.price}</Text>
-        </View>
+      <View style={styles.titles}>
+        <Text style={styles.title}>{ name }</Text>
+        <Text style={styles.subtitle}>
+          {tagline} 
+          <Text style={styles.subtitleCTA}>
+            {taglineCTA}
+          </Text>
+        </Text>
       </View>
-
-      <View style={styles.buttonsContainer}>
-        <StyledButton 
-          type="primary"
-          content="Custom Order"
-        />
-        <StyledButton 
-          type="secondary"
-          content="Exisiting Inventory"
-        />
-      </View>
-
     </View>
-    )
+
+    <View style={styles.buttonsContainer}>
+      <StyledButton 
+        type="primary"
+        content="Custom Order"
+      />
+      <StyledButton 
+        type="secondary"
+        content="Exisiting Inventory"
+      />
+    </View>
+
+  </View>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -49,6 +56,10 @@ const styles = StyleSheet.create({
     subtitle: {
       fontSize: 15,
       color: '#5c5e62'
+    },
+    subtitleCTA: {
+      textDecorationLine: 'underline',
+      fontWeight: '700',
     },
     image: {
       width: '100%',
