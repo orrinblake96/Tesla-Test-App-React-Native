@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Text, ImageBackground } from 'react-native';
+import { StyleSheet, View, Text, ImageBackground, Dimensions } from 'react-native';
 import StyledButton from './StyledButton';
 
 export default CarItem = (props) => {
-  const { tagline, taglineCTA, name, image } = props;
+  const { tagline, taglineCTA, name, image } = props.car;
 
   return (
   <View style={styles.carContainer}>
@@ -17,7 +17,7 @@ export default CarItem = (props) => {
       <View style={styles.titles}>
         <Text style={styles.title}>{ name }</Text>
         <Text style={styles.subtitle}>
-          {tagline} 
+          {tagline}&nbsp; 
           <Text style={styles.subtitleCTA}>
             {taglineCTA}
           </Text>
@@ -43,7 +43,7 @@ export default CarItem = (props) => {
 const styles = StyleSheet.create({
     carContainer: {
       width: '100%',
-      height: '100%',
+      height: Dimensions.get("window").height,
     },
     titles: {
       marginTop: '40%',
